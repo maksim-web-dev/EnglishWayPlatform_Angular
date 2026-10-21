@@ -3,7 +3,6 @@ import {RouterLink} from "@angular/router";
 import {TranslatePipe} from "@ngx-translate/core";
 import {NgIf} from '@angular/common';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ApiService} from '../../../services/api.service';
 import {RegistrationFormComponent} from '../../forms/registration-form/registration-form.component';
 import {RememberPasswordFormComponent} from '../../forms/remember-password-form/remember-password-form.component';
 import {AuthenticationFormComponent} from '../../forms/authentication-form/authentication-form.component';

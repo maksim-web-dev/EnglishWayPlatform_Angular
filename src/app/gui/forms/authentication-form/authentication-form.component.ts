@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FormDetails} from '../../../interfaces/FormDetails';
-import {AuthService} from '../../../services/auth.service';
+import {AuthService} from '../../../services/api.service';
 import {ValidationFormsService} from '../../../services/validation-forms.service';
 import {FormTemplateComponent} from '../form-template/form-template.component';
 import {Router, RouterLink} from '@angular/router';
@@ -59,7 +59,7 @@ export class AuthenticationFormComponent {
         password: this.authForm.get("password")?.value
       })
         .subscribe({
-          next: value => {
+          next: (value: any) => {
             console.log("login: value=" + JSON.stringify(value));
             let token = value.token;
             if (token) {
@@ -67,7 +67,7 @@ export class AuthenticationFormComponent {
             }
             this.router.navigate(['/cabinet']);
           },
-          error: value => {
+          error: (value: any) => {
             if (value.status == 0) {
               this.connectionProblemVisible = true;
             } else {

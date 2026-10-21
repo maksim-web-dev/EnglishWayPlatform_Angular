@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Language} from '../interfaces/Language';
 import {Menu} from '../interfaces/Menu';
-import {MenuItem} from '../interfaces/MenuItem';
+import {MenuItem} from '../interfaces/MenuItemDto';
 
 @Injectable({
   providedIn: 'root'

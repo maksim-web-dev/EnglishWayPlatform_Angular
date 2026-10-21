@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {NgClass, NgForOf} from '@angular/common';
 import {MenusService} from '../../../services/menus.service';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
-import {MenuItem} from '../../../interfaces/MenuItem';
+import {MenuItem} from '../../../interfaces/MenuItemDto';
 import {Router, RouterLink} from '@angular/router';
 
 @Component({

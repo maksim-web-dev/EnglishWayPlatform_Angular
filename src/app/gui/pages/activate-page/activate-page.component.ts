@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthService} from '../../../services/auth.service';
+import {AuthService} from '../../../services/api.service';
 import {ActivatedRoute} from '@angular/router';
 import {TranslatePipe} from '@ngx-translate/core';
 import {NgIf} from '@angular/common';

@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FormDetails} from '../../../interfaces/FormDetails';
-import {AuthService} from '../../../services/auth.service';
+import {AuthService} from '../../../services/api.service';
 import {ValidationFormsService} from '../../../services/validation-forms.service';
 import {FormTemplateComponent} from '../form-template/form-template.component';
 import {RouterLink} from '@angular/router';

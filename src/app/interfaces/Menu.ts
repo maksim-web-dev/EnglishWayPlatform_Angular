@@ -1,4 +1,4 @@
-import {MenuItem} from './MenuItem';
+import {MenuItem} from './MenuItemDto';
 
 export interface Menu {
   description: string;

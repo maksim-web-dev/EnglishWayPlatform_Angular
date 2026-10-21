@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FormDetails} from '../../../interfaces/FormDetails';
-import {AuthService} from '../../../services/auth.service';
+import {AuthService} from '../../../services/api.service';
 import {ValidationFormsService} from '../../../services/validation-forms.service';
 import {FormTemplateComponent} from '../form-template/form-template.component';
 import {RouterLink} from '@angular/router';
@@ -48,10 +48,10 @@ export class RememberPasswordFormComponent {
         email: this.rememberForm.get("email")?.value
       })
         .subscribe({
-          next: value => {
+          next: (_value: any) => {
             this.isSuccessTextAfterRemember = true
           },
-          error: value => {
+          error: (value: any) => {
             console.error("error=" + JSON.stringify(value));
             if (value.status == 0) {
               this.connectionProblemVisible = true;

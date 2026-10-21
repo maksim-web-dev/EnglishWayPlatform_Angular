@@ -2,7 +2,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {TranslatePipe} from "@ngx-translate/core";
-import {AuthService} from '../../../services/auth.service';
+import {AuthService} from '../../../services/api.service';
 import {ValidationFormsService} from '../../../services/validation-forms.service';
 import {FormTemplateComponent} from '../form-template/form-template.component';
 import {FormDetails} from '../../../interfaces/FormDetails';
@@ -95,10 +95,10 @@ export class RegistrationFormComponent {
         email: this.registerForm.get("email")?.value
       })
         .subscribe({
-          next: value => {
+          next: (_value: any) => {
             this.isSuccessTextAfterRegisterVisible = true
           },
-          error: value => {
+          error: (value: any) => {
             console.error("error=" + JSON.stringify(value));
             if (value.status == 0) {
               this.connectionProblemVisible = true;

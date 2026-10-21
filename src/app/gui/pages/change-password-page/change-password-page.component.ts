@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthService} from '../../../services/auth.service';
+import {AuthService} from '../../../services/api.service';
 import {ActivatedRoute} from '@angular/router';
 import {LanguageService} from '../../../services/language.service';
 import {ChangePasswordFormComponent} from '../../forms/change-password-form/change-password-form.component';
@@ -50,12 +50,12 @@ export class ChangePasswordPageComponent {
         console.log('activated-page.page, code=', this.code);
         this.authService.active(this.code)
             .subscribe({
-                next: value => {
+                next: (value: any) => {
                     this.isChangePasswordVisible = true;
                     console.log("next.value=" + JSON.stringify(value));
                     //      this.isActivatedInfoVisible = true
                 },
-                error: value => {
+                error: (value: any) => {
                     console.log("error.value=" + JSON.stringify(value));
 
                     if (value.status == 0) {

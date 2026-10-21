@@ -8,7 +8,7 @@ import {NgIf} from '@angular/common';
 import {Router, RouterOutlet} from '@angular/router';
 import {MenusService} from '../../../services/menus.service';
 import {Menu} from '../../../interfaces/Menu';
-import {MenuItem} from '../../../interfaces/MenuItem';
+import {MenuItem} from '../../../interfaces/MenuItemDto';
 import {CabinetAsideComponent} from '../../layouts/cabinet-aside/cabinet-aside.component';
 import {CabinetMainComponent} from '../../layouts/cabinet-main/cabinet-main.component';
 

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {MenuItem} from '../../../interfaces/MenuItem';
+import {MenuItem} from '../../../interfaces/MenuItemDto';
 import {NgClass, NgForOf} from '@angular/common';
 import {RouterLink} from '@angular/router';
 

@@ -8,7 +8,7 @@ import {NgClass, NgForOf} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Language} from '../../../interfaces/Language';
 import {LanguageService} from '../../../services/language.service';
-import {MenuItemDto} from '../../../interfaces/MenuItemDto';
+import {MenuItem} from '../../../interfaces/MenuItemDto';
 import {MenusService} from '../../../services/menus.service';
 
 @Component({
@@ -32,7 +32,7 @@ export class LandingHeaderSectionComponent implements OnInit {
   languages: Language[] = [];
   currentLanguage: string="en";
   isLoginDialogVisible: boolean = false;
-  menu: MenuItemDto[] | undefined;
+  menu: MenuItem[] | undefined;
   currentMenuUrl:string = "";
   isSectionFixed: boolean = false;
   @Input('AlwaysSectionFixed') isAlwaysSectionFixed: boolean= false;
