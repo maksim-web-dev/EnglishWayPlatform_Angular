@@ -6,6 +6,9 @@ import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { routes } from './app.routes';
 import {JwtInterceptor} from './interceptors/JwtInterceptor';
+import {AnimateDirectiveIntersection} from './interceptors/AnimateDirectiveInterception';
+import {SafeHtmlPipe} from './pipes/SafeHtmlPipe';
+import {provideQuillConfig} from 'ngx-quill';
 
 export function HttpLoaderFactory(http: any) {
   return new TranslateHttpLoader(http, './i18n/', '.json');
@@ -24,6 +27,24 @@ appConfig = {
         deps: [HttpClient]
       }
     }).providers!,
-    TranslateService
+    provideQuillConfig({
+      modules: {
+        syntax: true,
+        toolbar: /*true*/
+
+          [
+          ['bold', 'italic', 'underline'],
+          [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+          ['link', 'image'],
+          [{ 'header': [1, 2, 3, false] }],
+          ['clean']
+
+        ]
+
+      }
+    }),
+    TranslateService,
+    AnimateDirectiveIntersection,
+    SafeHtmlPipe
   ]
 };

@@ -1,0 +1,36 @@
+.content-area{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.content{
+  width: calc(100% - 250px);
+}
+.aside{
+  width: 164px;
+}
+.aside-menu-buttons{
+  margin: 10px;
+}
+.aside-menu-buttons button,
+.aside-content-buttons button{
+  padding: 8px;
+  margin: 10px;
+}
+.aside-content-buttons button{
+  background-color: var(--contentListBlockButton_BackgroundColor);
+  color: var(--contentListBlockButton_TextColor);
+}
+.aside-content-buttons{
+  border-top: 1px solid grey;
+}
+.not-yet{
+  background-color: #818181 !important;
+}
+.not-already-yet{
+  background-color: maroon !important;
+  color: white!important;
+}
+

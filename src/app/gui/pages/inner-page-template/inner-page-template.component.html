@@ -1,12 +1,12 @@
 <div class="cabinet-area">
   <section>
-    <app-cabinet-aside [menu]="asideMenu"></app-cabinet-aside>
-    <app-cabinet-main
+    <app-inner-aside-block [menu]="asideMenu"></app-inner-aside-block>
+    <app-inner-main-block
       [menu]="mainMenu"
       [roles]="roles"
       (logoutEvent)="logout()"
     >
       <router-outlet></router-outlet>
-    </app-cabinet-main>
+    </app-inner-main-block>
   </section>
 </div>

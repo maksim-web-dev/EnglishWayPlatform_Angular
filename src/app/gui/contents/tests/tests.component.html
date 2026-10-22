@@ -1,0 +1,89 @@
+<app-content-template
+  [expand]="expand"
+  [content]="content"
+  [adminMode]="adminMode"
+  [useTextAndTextarea] = false
+  [useCheckButton]="true"
+  [useListOfCases]="false"
+  [useCheckRequest]="true"
+  (updateContentRequest)="updateContent($event)"
+  (deleteContentRequest)="deleteContent()"
+  (editingModeRequest)="editContent()"
+  (checkRequest)="clickCheck()"
+  (resetRequest)="clickReset()"
+>
+
+  <div class="tests-content-main-buttons" *ngIf="adminMode && editingMode">
+    <label for="new-count-button-{{content.id}}">Count for creating:</label>
+    <input type="text" value="5" id="new-count-button-{{content.id}}">
+    <button (click)="addFewTests()">Add test blocks</button>
+  </div>
+
+  <div class="tests-content-tests-block">
+    <div *ngFor="let sentence of sentences">
+      <div class="tests-content-one-test">
+        <p class="tests-content-question" *ngIf="!editingMode">{{ sentence.text?sentence.text:'empty' }}</p>
+        <textarea id="question-textarea-{{sentence.id}}"
+                  *ngIf="editingMode"
+                  class="tests-content-question-textarea"
+                  autoResize
+        >{{ sentence.text }}</textarea>
+
+        <ul  class="tests-content-three-line">
+          <li class="tests-content-one-line">
+            <input type="radio"
+                   [checked]="adminMode? sentence.correctCase===1:sentence.answer=='1'"
+                   id="case1-radio-{{sentence.id}}"
+                   [disabled]="disabledUserElements"
+                   name="tests-content-question-{{sentence.id}}">
+            <input type="text"
+                   id="case1-text-{{sentence.id}}"
+                   class="tests-content-case-text-input"
+                   *ngIf="editingMode"
+                   value="{{sentence.case1}}">
+            <p class="case-text" *ngIf="!editingMode">{{sentence.case1}}</p>
+            <div class="tests-content-case-text" *ngIf="editingMode"></div>
+          </li>
+          <li class="tests-content-one-line">
+            <input type="radio"
+                   [checked]="adminMode? sentence.correctCase===2:sentence.answer=='2'"
+                   id="case2-radio-{{sentence.id}}"
+                   [disabled]="disabledUserElements"
+                   name="tests-content-question-{{sentence.id}}">
+            <input type="text"
+                   id="case2-text-{{sentence.id}}"
+                   class="tests-content-case-text-input"
+                   *ngIf="editingMode"
+                   value="{{sentence.case1}}">
+            <p class="case-text" *ngIf="!editingMode">{{sentence.case2}}</p>
+            <div class="tests-content-case-text" *ngIf="editingMode"></div>
+          </li>
+          <li class="tests-content-one-line">
+            <input type="radio"
+                   [checked]="adminMode? sentence.correctCase===3:sentence.answer=='3'"
+                   id="case3-radio-{{sentence.id}}"
+                   [disabled]="disabledUserElements"
+                   name="tests-content-question-{{sentence.id}}">
+            <input type="text"
+                   id="case3-text-{{sentence.id}}"
+                   class="tests-content-case-text-input"
+                   *ngIf="editingMode"
+                   value="{{sentence.case3}}">
+            <p class="case-text" *ngIf="!editingMode">{{sentence.case3}}</p>
+            <div class="tests-content-case-text" *ngIf="editingMode"></div>
+          </li>
+          <li class="tests-content-one-line tests-content-order-line" *ngIf="editingMode">
+            <label for="order-of-sentence-{{sentence.id}}">Order: </label>
+            <input type="text"
+                   id="order-of-sentence-{{sentence.id}}"
+                   class="tests-content-order-of-sentence"
+                   value="{{sentence.order}}"
+            >
+            <button (click)="deleteSentence(sentence.id)">del</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</app-content-template>

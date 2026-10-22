@@ -1,8 +1,9 @@
-export interface MenuItem {
+export interface MenuItemDto {
   id: number;
   name: string;
-  order:number;
+  order: number;
   url: string;
-  img:string;
+  img: string;
   title: string;
+  unitId: number;
 }

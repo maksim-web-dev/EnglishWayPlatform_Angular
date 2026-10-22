@@ -1,25 +1,26 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {MenuItem} from '../../../interfaces/MenuItem';
+import {MenuItemDto} from '../../../interfaces/MenuItemDto';
 import {NgClass, NgForOf} from '@angular/common';
 import {RouterLink} from '@angular/router';
 
 @Component({
-  selector: 'app-cabinet-main',
+  selector: 'app-inner-main-block',
   standalone: true,
   imports: [
     NgForOf,
     RouterLink,
     NgClass
   ],
-  templateUrl: './cabinet-main.component.html',
-  styleUrl: './cabinet-main.component.css'
+  templateUrl: './inner-main-block.component.html',
+  styleUrl: './inner-main-block.component.css'
 })
-export class CabinetMainComponent {
-  @Input() menu: MenuItem[]=[];
-  @Input() currentPageByMenuItem: string="Home";
+export class InnerMainBlockComponent {
+  @Input() menu: MenuItemDto[] = [];
+  @Input() currentPageByMenuItem: string = "Home";
   @Output() logoutEvent = new EventEmitter();
-  @Input() roles:string="";
-  logout(){
+  @Input() roles: string = "";
+
+  logout() {
     this.logoutEvent.emit();
   }
 }

@@ -1,8 +1,8 @@
+import {UserDto} from './UserDto';
+import {StudentActivityDto} from './StudentActivityDto';
 
-export interface StudentActivityDto {
-  courseId: number;
-  paymentSumma: number;
-  paymentDate: string;
-  paymentCount: number;
-  activeNumber: number;
+export interface StudentDto {
+  user: UserDto;
+  actualLevelCode: string;
+  studentActivities: StudentActivityDto[];
 }

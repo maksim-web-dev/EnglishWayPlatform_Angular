@@ -1,0 +1,22 @@
+.buttons{
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-content: center;
+}
+.save-button, .simple-button{
+  padding-top: 2px;
+}
+.save-button{
+  width: 70px;
+  height: 30px;
+}
+.simple-button{
+  width: 30px;
+  height: 30px;
+}
+.simple-button img{
+  width: 18px;
+  height: 18px;
+}

@@ -1,0 +1,82 @@
+<!--<app-inner-header-->
+<!--  h2Text="Lessons"-->
+<!--  describeText=""-->
+<!--&gt;</app-inner-header>-->
+
+<div class="course-container">
+  <div class="img-block">
+    <img src="{{course.img?course.img:course_img}}" alt="" id="course-img">
+    <button
+      *ngIf="adminMode"
+      (click)="uploadCourseImg()">upload</button>
+  </div>
+
+  <div class="course-block">
+    <div class="course-block1">
+      <div class="course-name">
+        <label for="lessons-list-course-name">Name:</label>
+        <input type="text" value="{{course.name}}" id="lessons-list-course-name" [readonly]="!editingMode">
+      </div>
+      <div class="course-level">
+        <div class="course-level-select">
+          <p *ngIf="!editingMode">{{ course.level }}</p>
+          <select id="lessons-list-course-level" *ngIf="editingMode">
+            <option *ngFor="let level of levels"
+                    [selected]="course.level === level"
+                    value="{{level}}">{{level}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="course-complication" *ngIf="adminMode">
+        <label>Complication</label>
+        <input type="text" [value]="course.complication" id="lessons-list-course-complication" [readonly]="!editingMode">
+      </div>
+    </div>
+    <div class="course-buttons"
+         *ngIf="adminMode"
+    >
+      <button (click)="removeCourse()">remove</button>
+      <button (click)="editCourse()" *ngIf="!editingMode">edit</button>
+      <button (click)="saveCourse()" *ngIf="editingMode">save</button>
+    </div>
+  </div>
+</div>
+<div class="order-aria" *ngIf="adminMode">
+  <button (click)="makeCorrectNumbersOfLesson()">set all number according to sequence</button>
+</div>
+
+<div class="lessons-aria">
+  <div *ngIf="course.units.length==0 && adminMode" class="lesson-new-button">
+    <button (click)="createLesson(0)">Add lesson</button>
+  </div>
+  <div *ngFor="let lesson of course.units" class="lesson">
+
+    <div class="lesson-buttons">
+      <app-editing-buttons-block
+        *ngIf="adminMode"
+        [editSaveButtonVisible]="false"
+        (removeEvent)="removeLesson($event)"
+        (downEvent)="downLesson($event)"
+        (upEvent)="upLesson($event)"
+        [id]="lesson.id"
+      ></app-editing-buttons-block>
+    </div>
+    <div class="lesson-number">
+      <input type="text" value="{{lesson.num}}"
+             [readonly]="!editingMode"
+             id="lessons-list-lesson-num-{{lesson.id}}">
+      /
+      <span>{{ course.units.length }}</span>
+    </div>
+    <div class="lesson-name">
+      <input type="text" value="{{lesson.name}}"
+             [readonly]="!editingMode"
+             id="lessons-list-lesson-name-{{lesson.id}}">
+    </div>
+    <div class="lesson-new-button">
+      <button (click)="moveToEditLessonPage1(lesson.id)">to Class</button>
+      <button (click)="createLesson(lesson.num)" *ngIf="adminMode">Add unit</button>
+    </div>
+  </div>
+</div>
+

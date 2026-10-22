@@ -1,0 +1,16 @@
+<div class="menu-content">
+  <ul>
+    <li *ngFor="let item of menu">
+      <div *ngIf="adminMode && editingMode">
+        <input type="text" id="lesson-menu-item-order-{{item.id}}" value="{{item.order}}" class="order-field">
+        <input type="text" id="lesson-menu-item-name-{{item.id}}" value="{{item.name}}" class="menu-item-name-field">
+      </div>
+      <a
+        (click)="clickMenu(item.id)"
+         title="{{item.title}}"
+         *ngIf="!editingMode"
+          [className]="activeMenuItemId===item.id?'active':''"
+      >{{ item.name }}</a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,17 @@
+<div class="buttons">
+  <button class="save-button" *ngIf="editMode && editSaveButtonVisible" (click)="save()">
+    <span>SAVE</span>
+  </button>
+  <button class="simple-button" *ngIf="!editMode && editSaveButtonVisible" (click)="edit()">
+    <img src="/images/edit.png" alt="Edit">
+  </button>
+  <button class="simple-button" *ngIf="!editMode" (click)="remove()">
+    <img src="/images/remove.png" alt="Remove">
+  </button>
+  <button class="simple-button" (click)="down()" [disabled]="editMode">
+    <img src="/images/down.png" alt="Down">
+  </button>
+  <button class="simple-button" (click)="up()" [disabled]="editMode">
+    <img src="/images/up.png" alt="Up">
+  </button>
+</div>

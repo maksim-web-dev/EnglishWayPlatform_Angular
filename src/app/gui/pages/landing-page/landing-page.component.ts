@@ -10,6 +10,13 @@ import {
   LandingSubscribeSectionComponent
 } from '../../sections/landing-subscribe-section/landing-subscribe-section.component';
 import {LandingMainSectionComponent} from '../../sections/landing-main-section/landing-main-section.component';
+import {LevelTestMarkService} from '../../../services/level-test-mark.service';
+import {LandingCardSectionComponent} from '../../sections/landing-card-section/landing-card-section.component';
+import {LandingPolygonSectionComponent} from '../../sections/landing-polygon-section/landing-polygon-section.component';
+import {LandingLevelSectionComponent} from '../../sections/landing-level-section/landing-level-section.component';
+import {LandingReviewsSectionComponent} from '../../sections/landing-reviews-section/landing-reviews-section.component';
+import {LandingStartSectionComponent} from '../../sections/landing-start-section/landing-start-section.component';
+import {LandingFooterSectionComponent} from '../../sections/landing-footer-section/landing-footer-section.component';
 
 @Component({
   selector: 'app-landing-page',
@@ -23,7 +30,13 @@ import {LandingMainSectionComponent} from '../../sections/landing-main-section/l
     LoginDialogComponent,
     LandingHeaderSectionComponent,
     LandingSubscribeSectionComponent,
-    LandingMainSectionComponent
+    LandingMainSectionComponent,
+    LandingCardSectionComponent,
+    LandingPolygonSectionComponent,
+    LandingLevelSectionComponent,
+    LandingReviewsSectionComponent,
+    LandingStartSectionComponent,
+    LandingFooterSectionComponent
   ],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
@@ -33,13 +46,15 @@ export class LandingPageComponent {
 
   constructor(private translate: TranslateService,
               private langService: LanguageService,
-              private loginDialogComponent: LoginDialogComponent) {
-    langService.initLanguage();
+              private loginDialogComponent: LoginDialogComponent,
+              private levelTestMarkService:LevelTestMarkService) {
+
   }
 
   ngOnInit() {
     console.log('LandingPageComponent.ngOnInit(), check if need this method');
     this.langService.initLanguage();
+    this.levelTestMarkService.freeLevelTestInfo();
   }
 
 
