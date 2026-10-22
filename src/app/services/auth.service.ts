@@ -1,0 +1,52 @@
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+  private apiUrl = '/api/';
+  private loginApiUrl = this.apiUrl + 'auth';
+  private rememberPasswordApiUrl = this.apiUrl + 'remember';
+  private changePasswordApiUrl = this.apiUrl + 'change-password';
+  private activateApiUrl = this.apiUrl + 'activate';
+  private regApiUrl = this.apiUrl + 'reg';
+  private quickRegApiUrl = this.apiUrl + 'quick-reg';
+  private cabinetApiUrl = this.apiUrl + 'cabinet';
+
+
+  constructor(private http: HttpClient) {
+  }
+
+  reg(credentials: { username: string; name: string; password: string; email: string }): Observable<any> {
+    console.log('AuthService, credentials=' + JSON.stringify(credentials))
+    return this.http.post(this.regApiUrl, credentials);
+  }
+
+  rememberPassword(credentials: { email: string }): Observable<any> {
+    console.log('AuthService, credentials.email=' + credentials.email)
+    return this.http.post(this.rememberPasswordApiUrl, credentials);
+  }
+
+  changePassword(credentials: { password: string; code: string }): Observable<any> {
+    return this.http.post(this.changePasswordApiUrl, credentials);
+  }
+
+  quickReg(credentials: { name: string; password: string; email: string; code: string }): Observable<any> {
+    console.log('AuthService, credentials=' + JSON.stringify(credentials))
+    return this.http.post(this.quickRegApiUrl, credentials);
+  }
+
+  login(credentials: { username: string; password: string }): Observable<any> {
+    return this.http.post(this.loginApiUrl, credentials);
+  }
+
+  active(code: string | null): Observable<any> {
+    return this.http.get(this.activateApiUrl + "?code=" + code);
+  }
+
+  cabinet(): Observable<any> {
+    return this.http.post(this.cabinetApiUrl, '');
+  }
+}
