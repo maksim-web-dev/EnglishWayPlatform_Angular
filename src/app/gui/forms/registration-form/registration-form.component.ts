@@ -2,7 +2,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {TranslatePipe} from "@ngx-translate/core";
-import {AuthService} from '../../../services/api.service';
+import {ApiService} from '../../../services/api.service';
 import {ValidationFormsService} from '../../../services/validation-forms.service';
 import {FormTemplateComponent} from '../form-template/form-template.component';
 import {FormDetails} from '../../../interfaces/FormDetails';
@@ -33,30 +33,30 @@ export class RegistrationFormComponent {
 //  changeTypeForm = new EventEmitter<string>();
 
   constructor(private fb: FormBuilder,
-              private authService: AuthService,
+              private authService: ApiService,
               private validationFormsService: ValidationFormsService) {
     this.registerFormDetails = new Map<string, FormDetails>([
-      ['username', {
-        type: 'text',
-        title: "USERNAME_TITLE",
-        autocomplete: "username",
-        placeholder: "",
-        comment: "REGISTRATION-PAGE_USERNAME_COMMENT"
-      }],
-      ['previousUsername', {type: '', title: "", autocomplete: "", placeholder: "", comment: ""}],
+      // ['username', {
+      //   type: 'text',
+      //   title: "USERNAME_TITLE",
+      //   autocomplete: "username",
+      //   placeholder: "",
+      //   comment: "REGISTRATION-PAGE_USERNAME_COMMENT"
+      // }],
+      //['previousUsername', {type: '', title: "", autocomplete: "", placeholder: "", comment: ""}],
       ['name', {
         type: 'text',
-        title: "NAME_TITLE",
+        title: "YOUR_NAME_TITLE",
         autocomplete: "name",
         placeholder: "",
-        comment: "REGISTRATION-PAGE_NICKNAME_COMMENT"
+        comment: ""//"REGISTRATION-PAGE_NICKNAME_COMMENT"
       }],
       ['email', {
         type: 'text',
-        title: "EMAIL_TITLE",
+        title: "EMAIL_TITLE_FOR_LOGIN",
         autocomplete: "email",
         placeholder: "",
-        comment: "REGISTRATION-PAGE_EMAIL_COMMENT"
+        comment: ""//"REGISTRATION-PAGE_EMAIL_COMMENT"
       }],
       ['password', {
         type: 'password',
@@ -74,8 +74,8 @@ export class RegistrationFormComponent {
       }],
     ])
     this.registerForm = this.fb.group({
-      username: ['user1', [Validators.required, Validators.minLength(1), validationFormsService.usernameValidator]],
-      previousUsername: [''],
+      //username: ['user1', [Validators.required, Validators.minLength(1), validationFormsService.usernameValidator]],
+      //previousUsername: [''],
       name: ['user1-cheg', [Validators.required, Validators.minLength(1), validationFormsService.nicknameValidator]],
       email: ['1@admin.com', [Validators.required, Validators.email]],
       password: ['123', [Validators.required, validationFormsService.passwordValidator, validationFormsService.passwordMatchValidator]],
@@ -89,16 +89,16 @@ export class RegistrationFormComponent {
     if (this.registerForm.valid) {
       this.registerForm.get('previousUsername')?.setValue(this.registerForm.get('username')?.value);
       this.authService.reg({
-        username: this.registerForm.get("username")?.value,
+        username: this.registerForm.get("email")?.value,
         name: this.registerForm.get("name")?.value,
         password: this.registerForm.get("password")?.value,
         email: this.registerForm.get("email")?.value
       })
         .subscribe({
-          next: (_value: any) => {
+          next: value => {
             this.isSuccessTextAfterRegisterVisible = true
           },
-          error: (value: any) => {
+          error: value => {
             console.error("error=" + JSON.stringify(value));
             if (value.status == 0) {
               this.connectionProblemVisible = true;

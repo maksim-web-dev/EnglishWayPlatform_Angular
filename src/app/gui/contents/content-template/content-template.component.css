@@ -1,0 +1,134 @@
+.lesson-block{
+  border: 2px solid maroon;
+  border-radius: 8px;
+  width: calc(100% - 20px);
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  background-color: var(--content_BackgroundColor);
+  color: var(--content_TextColor);
+  font-size: 16px;
+  line-height: 1.8;
+}
+.lesson-block-content{
+  width: calc(100% - 60px);
+  font-size: 16px;
+}
+
+.lesson-block-content input,
+.lesson-block-content textarea,
+.lesson-block-content button{
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+.content-task.just-line{
+  align-items: center;
+  padding-top: 10px;
+}
+.expand-block{
+  width: 40px;
+  text-align: center;
+}
+.expand-element{
+  font-size: 28px;
+  cursor: pointer;
+}
+.title-task-edit-block{
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.content-task{
+  text-align: left;
+  color: var(--contentTitleTask_TextColor);
+}
+.content-task.just-line{
+  height: 18px;
+}
+.expand-block button{
+  margin-top: 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 6px 10px;
+
+}
+.task-order{
+  width: 18px;
+}
+.task-name {
+  width: 450px;
+}
+
+.label-name{
+  width: 80px;
+  margin: 0 10px;
+  font-size: 14px;
+}
+.label-number{
+  width: 60px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+.text-div{
+  text-align: left;
+  margin-top: 14px;
+}
+.list-items{
+  display: block;
+  width: 100%;
+  min-height: 60px;
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid gray;
+  margin: 10px 0;
+}
+.item{
+  background-color: lightgrey;
+  color: black;
+  margin: 10px;
+  border-radius: 6px;
+  padding: 4px 10px;
+  display: inline-block;
+}
+.textarea-for-text-div{
+  background-color: white;
+  color: black;
+  width: calc(100% - 20px);
+  min-height: 120px;
+  padding: 8px;
+  margin-top: 10px;
+}
+.lesson-block.teacher-info-content{
+  background-color: var(--contentTeacherBlock_BackgroundColor);
+}
+.teacher-info-content .text-div{
+  color: var(--contentTeacherBlock_TextColor);
+}
+
+.check-buttons{
+  border-top: 1px solid grey;
+  padding-top: 14px;
+  margin-top: 14px;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+.check-buttons button{
+  padding: 6px;
+  margin: 10px 20px;
+}
+.score-block{
+  min-width: 80px;
+  border: 2px solid maroon;
+}
+.empty-item{
+  font-size: 40px;
+}

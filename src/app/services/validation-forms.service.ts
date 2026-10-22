@@ -21,7 +21,7 @@ export class ValidationFormsService {
   }
   nicknameValidator(formGroup: FormGroup): ValidationErrors | null {
     const name = formGroup.value;
-    if (name && name.length < 3) {
+    if (name && name.length < 1) {
       return {error: "NAME_TOO_SHORT"};
     }
     return null;

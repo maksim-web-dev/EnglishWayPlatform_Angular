@@ -1,33 +1,56 @@
 import {Injectable} from '@angular/core';
 
-export interface Level {
-  code: string;
-  name: string;
-  levels: string[];
-}
-
 @Injectable({
   providedIn: 'root'
 })
 export class LevelsService {
-  private levels: Level[] = [
-    {code: 'A1', name: 'Beginner',     levels: ['A1']},
-    {code: 'A2', name: 'Elementary',   levels: ['A1', 'A2']},
-    {code: 'B1', name: 'Intermediate', levels: ['A1', 'A2', 'B1']},
-    {code: 'B2', name: 'Upper-Intermediate', levels: ['A1', 'A2', 'B1', 'B2']},
-    {code: 'C1', name: 'Advanced',     levels: ['A1', 'A2', 'B1', 'B2', 'C1']},
-    {code: 'C2', name: 'Proficiency',  levels: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']},
-  ];
+  levels: string[] = [];
+  codeLevels: string[] = [];
+  objLevels: any[] = [];
 
-  getLevels(): Level[] {
+  initLevels() {
+    this.levels.push("Starter(A0)", "Beginner(A1)", "Pre-Intermediate(A2)", "Intermediate(B1)",
+      "Upper-Intermediate(B2)", "Advanced(C1)");
+    this.codeLevels.push("A0", "A1", "A2", "B1", "B2", "C1");
+    for (let code of this.codeLevels) {
+      let obj = {code: code, name: this.getLevelCode(code)};
+      this.objLevels.push(obj);
+    }
+  }
+
+  getLevelCode(levelCode: string | undefined): number {
+    switch (levelCode?.toLowerCase()) {
+      case 'a0':
+        return 1;
+      case 'a1':
+        return 2;
+      case 'a2':
+        return 3;
+      case 'b1':
+        return 4;
+      case 'b2':
+        return 5;
+      case 'c1':
+        return 6;
+      case 'c2':
+        return 7;
+    }
+    return 0;
+  }
+
+  constructor() {
+    this.initLevels();
+  }
+
+  getLevels(): string[] {
     return this.levels;
   }
 
-  getLevelsWithLevels(): Level[] {
-    return this.levels;
+  getCodeLevels(): string[] {
+    return this.codeLevels;
   }
 
-  getLevelCode(code: string): number {
-    return this.levels.findIndex(l => l.code === code);
+  getLevelsWithLevels(): any[] {
+    return this.objLevels;
   }
 }

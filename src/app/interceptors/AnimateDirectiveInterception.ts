@@ -11,10 +11,10 @@ import {
   selector: '[appAnimateIntersection]'
 })
 export class AnimateDirectiveIntersection implements OnInit {
-  @Input('appIntersectionAnimate') direction: 'from-left' | 'from-right' | 'from-bottom' = 'from-bottom';
-  @Input() appAnimateIntersection!: void;
+  @Input('appAnimateIntersection') direction: 'from-left' | 'from-right' | 'from-bottom' = 'from-bottom';
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  constructor(private el: ElementRef, private renderer: Renderer2) {
+  }
 
   ngOnInit(): void {
     const element = this.el.nativeElement;
@@ -29,8 +29,7 @@ export class AnimateDirectiveIntersection implements OnInit {
             observer.unobserve(element);
           }
         });
-      },
-      { threshold: 0.3 }
+      }, {threshold: 0.3}
     );
 
     observer.observe(element);

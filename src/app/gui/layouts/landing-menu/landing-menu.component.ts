@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {NgClass, NgForOf} from '@angular/common';
 import {MenusService} from '../../../services/menus.service';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
-import {MenuItem} from '../../../interfaces/MenuItemDto';
+import {MenuItemDto} from '../../../interfaces/MenuItemDto';
 import {Router, RouterLink} from '@angular/router';
 
 @Component({
@@ -18,7 +18,7 @@ import {Router, RouterLink} from '@angular/router';
   styleUrl: './landing-menu.component.css'
 })
 export class LandingMenuComponent {
-  menu: MenuItem[] | undefined;
+  menu: MenuItemDto[] | undefined;
   currentMenuUrl:string = "";
 
   constructor(private menusService: MenusService,

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthService} from '../../../services/api.service';
+import {ApiService} from '../../../services/api.service';
 import {ActivatedRoute} from '@angular/router';
 import {TranslatePipe} from '@ngx-translate/core';
 import {NgIf} from '@angular/common';
@@ -27,7 +27,7 @@ export class ActivatePageComponent {
   isActivatedInfoVisible = false;
   errorText: string = "";
 
-  constructor(private authService: AuthService,
+  constructor(private authService: ApiService,
               private route: ActivatedRoute,
               private languageService: LanguageService
   ) {}

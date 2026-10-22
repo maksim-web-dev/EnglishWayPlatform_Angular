@@ -1,0 +1,68 @@
+<div class="lesson-block {{classContentName}}">
+  <div class="lesson-block-content">
+
+
+    <div
+      *ngIf="(!expand && hiddenTaskName) || (!editingMode && content.task)"
+      [className]="expand?'content-task':'content-task just-line'"
+    >{{ content.task }}
+    </div>
+
+    <div *ngIf="!hiddenTaskName && editingMode" class="title-task-edit-block">
+      <label for="lesson-block-order-value-{{content.id}}" class="label-number">Number:</label>
+      <input type="text"
+             class="task-order"
+             [(ngModel)]="content.order"
+             id="lesson-block-order-value-{{content.id}}">
+
+      <label for="lesson-block-task-{{content.id}}" class="label-name">Task name: </label>
+      <input type="text"
+             [(ngModel)]="content.task"
+             class="task-name"
+             id="lesson-block-task-{{content.id}}">
+    </div>
+
+    <div *ngIf="expand">
+
+      <ng-content></ng-content>
+
+      <div *ngIf="useListOfCases" class="list-items">
+        <div *ngFor="let item of listOfCases" class="item">{{ item }}</div>
+        <div *ngIf="listOfCases.length == 0" class="empty-item">-</div>
+      </div>
+
+      <div
+        class="text-div"
+        style="text-indent: 30px"
+        *ngIf="useTextAndTextarea && (!editingMode && contentText.length>0)"
+        [innerHTML]="contentText | safeHtml" (change)="handleChange($event)">
+      </div>
+
+      <textarea
+        class='textarea-for-text-div'
+        (keydown)="onTextareaKeydown($event)"
+        *ngIf="useTextAndTextarea && editingMode"
+        [(ngModel)]="editingText"
+        autoResize
+      ></textarea>
+
+
+      <div class="check-buttons" *ngIf="!adminMode && useCheckButton">
+        <button (click)="clickCheck()" [disabled]="disabledCheckButton">Check</button>
+        <button class="score-block" *ngIf="content.score>0">{{content.score}}%</button>
+        <button (click)="clickReset()">Reset</button>
+      </div>
+
+    </div>
+
+
+  </div>
+  <div class="expand-block">
+    <p class="expand-element" *ngIf="!expand" (click)="changeExpandValue()">+</p>
+    <p class="expand-element" *ngIf="expand" (click)="changeExpandValue()">&mdash;</p>
+
+    <button *ngIf="adminMode && expand" (click)="deleteTemplate(content.id)">del</button>
+    <button *ngIf="adminMode && expand && !editingMode" (click)="editTemplate()">edit</button>
+    <button *ngIf="editingMode" (click)="updateContent()">save</button>
+  </div>
+</div>

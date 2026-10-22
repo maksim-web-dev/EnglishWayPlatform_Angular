@@ -1,0 +1,29 @@
+<app-content-template
+  [expand]="expand"
+  [content]="content"
+  [adminMode]="adminMode"
+  [useCheckButton]="true"
+  [useListOfCases]="false"
+  (updateContentRequest)="updateContent($event)"
+  (deleteContentRequest)="deleteContent()"
+
+>
+<!--  (editingModeTurnOnAction)="editContent()"-->
+<!--  (savingAction)="saveContent($event)"-->
+<!--  (deleteAction)="deleteContent()"-->
+
+
+<!--  <div class="text-with-select-div" *ngIf="!editingMode">-->
+<!--    <div [innerHTML]="contentText | safeHtml"></div>-->
+<!--  </div>-->
+
+
+<!--  <textarea-->
+<!--    class="content-block-simple-text-textarea"-->
+<!--    (keydown)="onTextareaKeydown($event)"-->
+<!--    *ngIf="editingMode"-->
+<!--    [(ngModel)]="editingText"-->
+<!--    autoResize-->
+<!--  ></textarea>-->
+
+</app-content-template>

@@ -7,9 +7,10 @@ export interface ContentDto {
   type: string;
   menuItemId:number;
   url:string;
-  url1:string;
   code:string;
   order:number;
   numValue:number;
+  userAnswer: string;
+  score: number;
   sentences: ContentSentenceDto[] | undefined;
 }

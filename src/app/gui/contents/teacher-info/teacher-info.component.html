@@ -1,0 +1,13 @@
+<app-content-template
+  [expand]="expand"
+  [content]="content"
+  [adminMode]="adminMode"
+  classContentName = "teacher-info-content"
+  [useTextAndTextarea] = true
+  [hiddenTaskName]="true"
+  (updateContentRequest)="updateContent($event)"
+  (deleteContentRequest)="deleteContent()"
+>
+</app-content-template>
+
+

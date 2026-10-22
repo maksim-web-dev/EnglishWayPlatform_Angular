@@ -1,0 +1,16 @@
+<app-form-template
+  [mainForm]="registerForm"
+  [mainFormDetails]="registerFormDetails"
+  [successTextShow]="isSuccessTextAfterRegisterVisible"
+  [showValidationErrors]="isRegisterErrorVisible"
+  [connectionProblemVisible]="connectionProblemVisible"
+  [errorText]="errorText"
+  changeTypeFormLink=""
+  submitButtonName = "REGISTRATION-PAGE_REGISTER_BUTTON_NAME"
+  (formSubmitEvent)="onRegisterSubmit()"
+>
+  {{ "LEVEL-TEST-PAGE_SUCCESS_TEXT_AFTER_REGISTERED"|translate }}
+  <br>
+  <a routerLink="/login">{{"LANDING-SECTION01_LOGIN_LINK"|translate}}</a>
+</app-form-template>
+

@@ -1,12 +1,24 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StringUtilService {
-  convertStringToNumber(value: string | null, defaultValue: number): number {
-    if (value === null || value === '') return defaultValue;
-    const parsed = Number(value);
-    return isNaN(parsed) ? defaultValue : parsed;
+
+  convertNumberArrayToString(arr: number[]): string {
+    let value = arr.map(v => "" + v).join(",");
+    return arr.map(v => "" + v).join(",");
   }
+  readNumberArrayFromString(str: string): number[] {
+    return str?.split(",").map(v => Number(v)) ?? []
+  }
+  convertStringToNumber(str: string|undefined|null, def: number){
+    try{
+      if(str === undefined || str ===null) return def;
+      return parseInt(str);
+    } catch (e){
+      return def;
+    }
+  }
+
 }

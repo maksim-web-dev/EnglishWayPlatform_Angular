@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FormDetails} from '../../../interfaces/FormDetails';
-import {AuthService} from '../../../services/api.service';
+import {ApiService} from '../../../services/api.service';
 import {ValidationFormsService} from '../../../services/validation-forms.service';
 import {FormTemplateComponent} from '../form-template/form-template.component';
 import {RouterLink} from '@angular/router';
@@ -27,7 +27,7 @@ export class ChangePasswordFormComponent {
   @Input({required: true}) code: string = "";
 
   constructor(private fb: FormBuilder,
-              private authService: AuthService,
+              private authService: ApiService,
               private validationFormsService: ValidationFormsService) {
     this.changePasswordFormDetails = new Map<string, FormDetails>([
       ['password', {

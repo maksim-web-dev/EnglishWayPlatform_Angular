@@ -1,4 +1,9 @@
-<form [formGroup]="mainForm" *ngIf="mainForm" (ngSubmit)="onFormSubmit()">
+<form
+  [formGroup]="mainForm"
+  *ngIf="mainForm"
+  (ngSubmit)="onFormSubmit()"
+  class="form-container"
+>
   <div *ngIf="!successTextShow">
     <div class="field-area" *ngFor="let key of getControlKeys()">
 

@@ -1,11 +1,11 @@
-import {LessonDto} from './LessonDto';
+import {UnitDto} from './UnitDto';
 
 export interface CourseDto {
   id: number;
   name: string;
+  img: string;
   level: string;
   codeLevel: string;
-  img: string;
   complication: string;
-  lessons: LessonDto[];
+  units: UnitDto[];
 }

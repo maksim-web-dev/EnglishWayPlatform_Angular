@@ -8,9 +8,9 @@ import {NgIf} from '@angular/common';
 import {Router, RouterOutlet} from '@angular/router';
 import {MenusService} from '../../../services/menus.service';
 import {Menu} from '../../../interfaces/Menu';
-import {MenuItem} from '../../../interfaces/MenuItemDto';
-import {CabinetAsideComponent} from '../../layouts/cabinet-aside/cabinet-aside.component';
-import {CabinetMainComponent} from '../../layouts/cabinet-main/cabinet-main.component';
+import {MenuItemDto} from '../../../interfaces/MenuItemDto';
+import {InnerAsideBlockComponent} from '../../layouts/inner-aside-block/inner-aside-block.component';
+import {InnerMainBlockComponent} from '../../layouts/inner-main-block/inner-main-block.component';
 
 @Component({
   selector: 'app-inner-page-template',
@@ -19,8 +19,8 @@ import {CabinetMainComponent} from '../../layouts/cabinet-main/cabinet-main.comp
     LandingHeaderSectionComponent,
     LandingSubscribeSectionComponent,
     NgIf,
-    CabinetAsideComponent,
-    CabinetMainComponent,
+    InnerAsideBlockComponent,
+    InnerMainBlockComponent,
     RouterOutlet
   ],
   templateUrl: './inner-page-template.component.html',
@@ -28,34 +28,39 @@ import {CabinetMainComponent} from '../../layouts/cabinet-main/cabinet-main.comp
 })
 export class InnerPageTemplateComponent {
   text: string = "";
-  mainMenu: MenuItem[] =[];
-  asideMenu: MenuItem[]=[];
-  roles: string="";
+  mainMenu: MenuItemDto[] = [];
+  asideMenu: MenuItemDto[] = [];
+  roles: string = "";
+
   constructor(private apiService: ApiService,
               private router: Router,
-              private menusService:MenusService) {
-    this.initMenu();
+              private menusService: MenusService) {
+    //this.initMenu();
     this.init();
   }
-  initMenu(){
-    this.mainMenu = this.menusService.getMenu('cabinet-page-menu')?? [];
-    this.asideMenu = this.menusService.getMenu('cabinet-page-menu')?? [];
+
+  initMenu() {
+    this.mainMenu = this.menusService.getMenu('inner-page-template-menu') ?? [];
+    this.asideMenu = this.menusService.getMenu('inner-page-template-menu') ?? [];
   }
+
   init() {
+    this.checkToken();
     this.apiService.innerPage()
       .subscribe({
         next: value => {
           this.mainMenu = value.mainMenu ?? [];
           this.roles = value.roles;
           //this.asideMenu = value.asideMenu.items ?? [];
-          console.log('cabinet.next:value='+JSON.stringify(value))
-          console.log('cabinet.next: mainMenu='+this.mainMenu)
-          console.log('cabinet.next: roles='+this.roles)
+          console.log('cabinet.next:value=' + JSON.stringify(value))
+          console.log('cabinet.next: mainMenu=' + this.mainMenu)
+          console.log('cabinet.next: roles=' + this.roles)
           //this.text = 'next:'+JSON.stringify(value);
         },
         error: value => {
-          console.log('error:'+JSON.stringify(value));
-          if(value.status == 401) {
+          console.log('error:' + JSON.stringify(value));
+          if (value.status == 401) {
+            this.logout();
             this.text = "Unauthorized";
           }
         }
@@ -67,8 +72,9 @@ export class InnerPageTemplateComponent {
     localStorage.removeItem('jwtToken');
     this.checkToken();
   }
-  checkToken(){
-    if(!localStorage.getItem('jwtToken')){
+
+  checkToken() {
+    if (!localStorage.getItem('jwtToken')) {
       this.router.navigate(["/"]);
     }
   }

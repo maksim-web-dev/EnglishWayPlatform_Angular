@@ -1,0 +1,86 @@
+<app-inner-header
+  h2Text="{{header}}"
+  describeText=""
+></app-inner-header>
+
+<div class="content-area">
+  <div class="content">
+    <div *ngFor="let content of contents">
+
+      <app-teacher-info
+        *ngIf="content.type === 'teacher_info' && adminMode"
+        [content]="content"
+        [expand]="true"
+        [adminMode]="adminMode"
+        (updateContentAndListRequest) = "updateContentAndList(content)"
+        (deleteContentFromListRequest)="deleteContentFromList(content.id)"
+      ></app-teacher-info>
+
+      <app-youtube-video
+        *ngIf="content.type === 'youtube_video'"
+        [content]="content"
+        [expand]="true"
+        [adminMode]="adminMode"
+        (updateContentAndListRequest) = "updateContentAndList(content)"
+        (deleteContentFromListRequest)="deleteContentFromList(content.id)"
+      ></app-youtube-video>
+
+      <app-tests
+        *ngIf="content.type === 'tests'"
+        [content]="content"
+        [expand]="true"
+        [adminMode]="adminMode"
+        [studentMode]="studentMode"
+        (updateContentAndListRequest) = "updateContentAndList(content)"
+        (deleteContentFromListRequest)="deleteContentFromList(content.id)"
+      ></app-tests>
+
+      <app-text-with-select
+        *ngIf="content.type === 'text-with-select'"
+        [content]="content"
+        [expand]="true"
+        [adminMode]="adminMode"
+        [studentMode]="studentMode"
+        (updateContentAndListRequest) = "updateContentAndList(content)"
+        (deleteContentFromListRequest)="deleteContentFromList(content.id)"
+      ></app-text-with-select>
+
+      <app-text-with-select-from-list
+        *ngIf="content.type === 'text-with-select-from-list'"
+        [content]="content"
+        [expand]="true"
+        [adminMode]="adminMode"
+        [studentMode]="studentMode"
+        (updateContentAndListRequest) = "updateContentAndList(content)"
+        (deleteContentFromListRequest)="deleteContentFromList(content.id)"
+      ></app-text-with-select-from-list>
+
+    </div>
+  </div>
+  <div class="aside">
+    <div class="aside-menu">
+      <app-menu-content
+        [menu]="menu"
+        [editingMode]="editingMenuMode"
+        [activeMenuItemId]="activeMenuItemId"
+        [adminMode]="adminMode"
+        (menuAction)="clickMenuItem($event)"
+      ></app-menu-content>
+    </div>
+    <div class="aside-menu-buttons" *ngIf="adminMode">
+      <button (click)="addMenuItem()">Add menu</button>
+      <button (click)="editMenuItem()" *ngIf="!editingMenuMode">Edit menu</button>
+      <button (click)="saveMenuItem()" *ngIf="editingMenuMode">Save menu</button>
+    </div>
+    <div class="aside-content-buttons"  *ngIf="adminMode">
+      <button (click)="createNewContent('teacher_info', false)">add teacher-info</button>
+      <button (click)="createNewContent('youtube_video', false)">add youtube_video</button>
+      <button (click)="createNewContent('tests', false)">add tests</button>
+      <button (click)="createNewContent('text-with-select', false)">add text <br>OR<br> text-with-choose</button>
+      <button (click)="createNewContent('text-with-select-from-list', false)">add text-with-select-from-list</button>
+      <button class="not-yet" (click)="createNewContent('text-with-input', true)">add text-with-input</button>
+      <button class="not-yet" (click)="createNewContent('sentences-with-text', true)">add sentences-with-text</button>
+      <button class="not-yet" (click)="createNewContent('sentences-with-select', true)">add sentences-with-select</button>
+    </div>
+  </div>
+</div>
