@@ -39,4 +39,4 @@ assets/i18n/en.json
     this.translate.use(lang);
   }
 ----------------------------------------
-asd
+
