@@ -1,16 +1,18 @@
-main {
-  width: 100%;
+.main {
+  width: 1024px;
 }
 .main-header {
   height: 40px;
-}
-.main-header {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   background-color: var(--cabinetLayoutMainTopBackground);
   color: var(--cabinetLayoutMainTopColor);
+}
+.main-header-nav li{
+  display: inline-block;
 }
 li a {
   color: var(--cabinetLayoutMainTopColor);
@@ -27,8 +29,8 @@ li a.active {
 .main-header-nav li {
   margin-left: 20px;
 }
-.main-header {
-  padding: 0 40px;
+.main-header-aside{
+  padding-right: 40px;
 }
 .main-header-aside a{
   margin-left: 20px;
@@ -40,6 +42,7 @@ li a.active {
   padding: 20px;
   font-size: 16px;
   text-align: center;
+  height: 100%;
 }
 .main-content h2 {
   color: var(--cabinetLayoutMainHeaderColor);

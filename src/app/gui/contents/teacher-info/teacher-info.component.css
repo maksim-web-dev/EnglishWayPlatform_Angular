@@ -1,0 +1,16 @@
+.content-block-teacher-info-textarea{
+  background-color: var(--contentInputEditing_BackgroundColor);
+  color: var(--contentInputEditing_TextColor);
+  height: 100%;
+  width: calc(100% - 20px);
+  padding: 8px;
+  border-radius: 5px;
+}
+.content-block-teacher-info-p{
+  background-color: var(--contentTeacherBlock_BackgroundColor);
+  color: var(--contentTeacherBlock_TextColor);
+  width: calc(100% - 20px);
+  padding: 8px;
+  text-align: left;
+  letter-spacing: 1.4px;
+}

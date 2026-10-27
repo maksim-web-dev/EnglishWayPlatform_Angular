@@ -1,0 +1,83 @@
+.tests-content-main-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid grey;
+}
+.tests-content-main-buttons input,
+.tests-content-main-buttons button,
+.tests-content-tests-block input,
+.tests-content-tests-block textarea,
+.tests-content-tests-block button{
+  padding: 6px;
+  border-radius: 5px;
+}
+.tests-content-main-buttons input{
+  margin-left: 10px;
+  margin-right: 40px;
+  width: 30px;
+}
+.tests-content-edit-save-button{
+  margin-left: 40px;
+}
+.tests-content-tests-block{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.tests-content-one-test{
+  width: 180px;
+  margin: 10px 20px 10px 0;
+  min-height: 60px;
+  text-align: left;
+}
+.tests-content-three-line li{
+  display: block;
+}
+.tests-content-one-line{
+  text-align: left;
+  margin-left: 15px;
+}
+.tests-content-one-line input[checked=true]{
+  margin-bottom: 10px;
+}
+.tests-content-one-line input,
+.tests-content-one-line p{
+  display: inline-block;
+}
+.case-text{
+  margin-left: 12px;
+}
+.tests-content-case-text{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.tests-content-case-text-input{
+  width: 100px;
+  margin-left: 10px;
+  padding: 8px;
+}
+.tests-content-order-of-sentence{
+  width: 20px;
+  padding: 8px;
+  margin-left: 6px;
+}
+.tests-content-order-line button{
+  margin-left: 20px;
+}
+.tests-content-order-line{
+  height: 48px;
+}
+.tests-content-question-textarea,
+.tests-content-case-text-input,
+.tests-content-case-text{
+ padding: 6px;
+}
+
+

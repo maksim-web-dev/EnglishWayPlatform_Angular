@@ -74,7 +74,7 @@
   color: var(--landingHeaderSectionTextColor);
 }
 .header-aside-block li{
-  min-width: 50px;
+  min-width: 60px;
 }
 .header-menu-navigation a{
   position: relative;

@@ -27,6 +27,8 @@
               }
             ],
             "styles": [
+              "node_modules/quill/dist/quill.snow.css",
+              "node_modules/highlight.js/styles/github.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -85,6 +87,8 @@
               }
             ],
             "styles": [
+              "node_modules/quill/dist/quill.snow.css",
+              "node_modules/highlight.js/styles/github.css",
               "src/styles.css"
             ],
             "scripts": []

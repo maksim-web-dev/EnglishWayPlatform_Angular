@@ -1,0 +1,43 @@
+<div class="header-block">
+  <div class="header-block-filter" *ngIf="filterVisible">
+    <p>Levels:</p>
+    <ul>
+      <li class="lines" *ngFor="let code of codeLevels">
+        <input type="checkbox" id="level-{{code}}" value="level" (change)="updatePage()">
+        <p>{{ code }}</p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="header-buttons" *ngIf="adminMode">
+    <button (click)=create()>Create course</button>
+  </div>
+</div>
+
+<div class="content">
+  <div class="course-list">
+    <div class="course-block" *ngFor="let course of visibleCourses" (click)="goToLessonPage(course.id)">
+      <div class="course-block-img" >
+        <img
+          src="{{course.img?course.img:defaultCourseImg}}"
+          alt=""
+        >
+      </div>
+      <p><span class="level">Level:</span><span class="title"> {{ course.level }}</span></p>
+      <p><span class="level">Complication:</span><span class="title"> {{ course.complication }}</span></p>
+      <p>{{ course.name }}</p>
+    </div>
+  </div>
+</div>
+
+<app-modal
+  title="Create new course"
+  *ngIf="adminMode"
+  [isVisible]="newCourseDialogVisible"
+>
+  <input type="text" id="newCourseName" class="new-course-name">
+  <select id="newCourseLevel" class="new-course-level">
+    <option *ngFor="let level of levels" value="{{level}}">{{level}}</option>
+  </select>
+  <button class="new-course-button" (click)="createCourse()">Create course</button>
+</app-modal>

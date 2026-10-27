@@ -1,0 +1,32 @@
+.menu-content{
+  width: 160px;
+  border-radius: 8px;
+  border: 2px solid maroon;
+}
+.menu-content ul {
+  margin: 10px 0;
+  list-style: none;
+}
+.menu-content li {
+  display: block;
+  padding: 10px;
+}
+.menu-content li:not(:last-child) {
+  border-bottom: 1px solid var(--cabinetLayoutAsideTopBackground);
+}
+.menu-content li  a{
+  color: var(--cabinetLayoutMainColor);
+}
+.menu-content  li  a:hover{
+  color: var(--cabinetLayoutMainActiveTopColor);
+}
+.menu-content li  a.active{
+  color: red;
+}
+.menu-item-name-field{
+  width: 80px;
+  margin-left: 10px;
+}
+.order-field{
+  width: 24px;
+}

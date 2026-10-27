@@ -1,4 +1,4 @@
-export interface LessonMenuDto {
-  lessonId:number;
+export interface UnitMenuDto {
+  unitId:number;
   menuItemId:number;
 }

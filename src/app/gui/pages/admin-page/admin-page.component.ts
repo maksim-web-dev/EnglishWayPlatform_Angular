@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+      import { Component } from '@angular/core';
 import {InnerAsideBlockComponent} from '../../layouts/inner-aside-block/inner-aside-block.component';
 import {InnerMainBlockComponent} from '../../layouts/inner-main-block/inner-main-block.component';
 

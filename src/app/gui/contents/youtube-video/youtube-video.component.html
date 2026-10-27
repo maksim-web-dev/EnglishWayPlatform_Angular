@@ -1,0 +1,52 @@
+<app-content-template
+  [expand]="expand"
+  [content]="content"
+  [adminMode]="adminMode"
+  [useTextAndTextarea] = true
+  (updateContentRequest)="updateContent()"
+  (deleteContentRequest)="deleteContent()"
+  (editingModeRequest)="editContent()"
+
+>
+  <div class="error-text" *ngIf="!videoDefined">{{errorText}}</div>
+
+  <div *ngIf="!editingMode && videoDefined">
+    <iframe
+      width="560"
+      height="315"
+      [attr.src]="videoUrl"
+
+      allowfullscreen>
+    </iframe>
+  </div>
+
+<!--  <div [innerHTML]="content.text | safeHtml"-->
+<!--       *ngIf="!editingMode && content.text"-->
+<!--       class="youtube-video-text"-->
+<!--  ></div>-->
+
+  <div class="youtube-video-edit-line" *ngIf="editingMode">
+    <label for="url-{{content.id}}" class="label-name">Youtube url:</label>
+    <input type="text"
+           class="youtube-video-content-url"
+           [(ngModel)]="content.url"
+           placeholder="Enter a youtube link"
+           id="url-{{content.id}}">
+  </div>
+
+<!--  <div class="youtube-video-edit-line" *ngIf="editingMode">-->
+<!--    <label for="youtube-video-content-textarea-{{content.id}}"-->
+
+<!--           class="label-name">Text under video:</label>-->
+
+<!--    <quill-editor-->
+<!--      *ngIf="editingMode"-->
+<!--      class="youtube-video-content-textarea"-->
+<!--      style="width:100%"-->
+<!--      placeholder="Enter text here"-->
+<!--      [(ngModel)]="content.text"></quill-editor>-->
+
+<!--  </div>-->
+
+
+</app-content-template>

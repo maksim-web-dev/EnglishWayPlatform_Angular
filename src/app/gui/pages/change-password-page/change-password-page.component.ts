@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthService} from '../../../services/auth.service';
+import {ApiService} from '../../../services/api.service';
 import {ActivatedRoute} from '@angular/router';
 import {LanguageService} from '../../../services/language.service';
 import {ChangePasswordFormComponent} from '../../forms/change-password-form/change-password-form.component';
@@ -28,7 +28,7 @@ export class ChangePasswordPageComponent {
     errorText: string = "";
     isChangePasswordVisible: boolean = false;
 
-    constructor(private authService: AuthService,
+    constructor(private authService: ApiService,
                 private route: ActivatedRoute,
                 private languageService: LanguageService
     ) {
