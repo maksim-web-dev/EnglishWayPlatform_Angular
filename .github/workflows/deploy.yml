@@ -6,14 +6,6 @@ on:
       - main
   workflow_dispatch:
 
-#env:
-  #  AWS_REGION: eu-central-1
-#  ECR_REPOSITORY: english-way-backend
-#  ECS_CLUSTER: english-way-cluster
-#  ECS_SERVICE: english-way-service
-#  CONTAINER_NAME: english-way-platform
-#  TASK_DEFINITION: task-definition.json
-
 permissions:
   id-token: write
   contents: read
@@ -53,6 +45,6 @@ jobs:
 
       - name: Invalidate CloudFront
         run: |
-          aws cloudront cretae-invalidation \
-          -- dictribution-id $ {{ vars.CLOUDFRONT_ID}} \
+          aws cloudfront create-invalidation \
+          -- distribution-id $ {{ vars.CLOUDFRONT_ID}} \
           --paths "/*"
