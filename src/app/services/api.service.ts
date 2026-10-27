@@ -10,12 +10,14 @@ import {MenuItemDto} from '../interfaces/MenuItemDto';
 import {ResultDto} from '../interfaces/ResultDto';
 import {StudentActivityDto} from '../interfaces/StudentActivityDto';
 import {SettingsDto} from '../interfaces/SettingsDto';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:8089/api/';
+  private readonly apiUrl = environment.apiUrl;
+
   // auth registration
   private loginApiUrl = this.apiUrl + 'auth/login';
   private rememberPasswordApiUrl = this.apiUrl + 'auth/remember';
@@ -24,8 +26,10 @@ export class ApiService {
   private regApiUrl = this.apiUrl + 'auth/reg';
   private quickRegApiUrl = this.apiUrl + 'auth/quick-reg';
   private innerPageApiUrl = this.apiUrl + 'inner-page';
+
   // get-menu-by-unit
   private menuItemByUnitApiUrl = this.apiUrl + 'get-menu-by-unit';
+
   // LevelTest
   private levelTestApiUrl = this.apiUrl + 'auth/level-tests';
   private adminLevelTestApiUrl = this.apiUrl + 'admin/get-level-tests';
@@ -33,26 +37,33 @@ export class ApiService {
   private updateLevelTestApiUrl = this.apiUrl + 'admin/update-level-test';
   private changeOrderLevelTestApiUrl = this.apiUrl + 'admin/change-order-level-test';
   private deleteLevelTestApiUrl = this.apiUrl + 'admin/delete-level-test';
+
   // For students: Course
   private studentGetCoursesApiUrl = this.apiUrl + 'get-courses';
   private studentGetUnitApiUrl = this.apiUrl + 'get-units';
   private studentGetContentsUrl = this.apiUrl + 'get-contents';
+
   // For teacher
   private teacherGetStudentActivitiesUrl = this.apiUrl + 'teacher/get-student-activities';
   private teacherGetStudentUnitsUrl = this.apiUrl + 'teacher/get-student-units';
+
   // AdminCourse
   private adminGetCoursesApiUrl = this.apiUrl + 'admin/get-courses';
   private adminCreateCourseApiUrl = this.apiUrl + 'admin/create-course';
   private adminUpdateCourseApiUrl = this.apiUrl + 'admin/update-course';
   private adminDeleteCourseApiUrl = this.apiUrl + 'admin/delete-course';
+
   // AdminUnits
   private adminGetUnitsApiUrl = this.apiUrl + 'admin/get-units';
   private adminUpdateUnitsApiUrl = this.apiUrl + 'admin/update-units';
+
   // AdminStudents
   private adminGetStudentActivitiesApiUrl = this.apiUrl + 'admin/get-students-activity';
   private adminCreateStudentActivityApiUrl = this.apiUrl + 'admin/create-student-activity';
+
   // AdminHistory
   private adminGetHistoryApiUrl = this.apiUrl + 'admin/get-history';
+
   // AdminSettings
   private adminGetSettingsApiUrl = this.apiUrl + 'admin/get-settings';
   private adminUpdateSettingsApiUrl = this.apiUrl + 'admin/update-settings';
@@ -61,11 +72,13 @@ export class ApiService {
   private adminCreateUnitMenuItemUrl = this.apiUrl + 'admin/create-menu-item-for-unit';
   private adminUpdateUnitMenuItemUrl = this.apiUrl + 'admin/update-menu-items-for-unit';
   private adminDeleteUnitMenuItemUrl = this.apiUrl + 'admin/delete-menu-item';
+
   // Edit Content
   private adminGetContentApiUrl = this.apiUrl + 'admin/get-contents';
   private adminCreateContentApiUrl = this.apiUrl + 'admin/create-content';
   private adminUpdateContentApiUrl = this.apiUrl + 'admin/update-content';
   private adminDeleteContentApiUrl = this.apiUrl + 'admin/delete-content';
+
   // Result
   private cabinetSaveResultApiUrl = this.apiUrl + 'cabinet/save-results';
 
