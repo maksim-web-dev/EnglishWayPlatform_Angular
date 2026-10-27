@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch:
 
-env:
+#env:
   #  AWS_REGION: eu-central-1
 #  ECR_REPOSITORY: english-way-backend
 #  ECS_CLUSTER: english-way-cluster
