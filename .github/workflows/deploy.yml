@@ -47,7 +47,7 @@ jobs:
 
       - name: Deploy to S3
         run: |
-          aws s3 sync dist/english-way/browser/ \
+          aws s3 sync dist/english-way-platform-angular/ \
           s3://${{ vars.S3_BUCKET }}/ \
           --delete
 
